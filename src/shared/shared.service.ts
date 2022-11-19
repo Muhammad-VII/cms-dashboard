@@ -19,7 +19,8 @@ export class SharedService {
       const newContactData = new this.contactModel({
         name: createContactUsDto.name,
         email: createContactUsDto.email,
-        message: createContactUsDto.message,
+        subject: createContactUsDto.subject,
+        message: createContactUsDto.message
       });
       const results = await newContactData.save();
       return results;

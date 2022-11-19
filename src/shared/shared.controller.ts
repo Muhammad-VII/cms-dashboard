@@ -17,8 +17,12 @@ export class SharedController {
         message: 'success',
         data,
       });
-      return { offers: data };
+      return { results: data };
     } catch (error) {
+      res.status(404).send({
+        message: 'error',
+        error,
+      })
       return error;
     }
   }
