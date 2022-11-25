@@ -18,7 +18,7 @@ export class AppController {
   constructor(private _UserService: UsersService, private httpService: HttpService) {
     setInterval(() => {
       this.findAll().subscribe()
-    }, 300000)
+    }, 1750000)
   }
 
   findAll(): Observable<any> {
