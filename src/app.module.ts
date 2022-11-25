@@ -11,6 +11,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { ChatGateway } from './gateways/event.gateway';
 import { HttpModule } from '@nestjs/axios';
 import { SharedModule } from './shared/shared.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { SharedModule } from './shared/shared.module';
       limit: 5
     }),
     SharedModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService, ChatGateway],

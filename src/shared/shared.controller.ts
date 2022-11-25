@@ -4,15 +4,17 @@ import { Response } from 'express';
 import { createContactUsDto } from './dto/common.dto';
 import { PaginationParams } from './dto/pagination-params';
 import { SharedService } from './shared.service';
+import { MailService } from 'src/mail/mail.service';
 
 @Controller('shared')
 export class SharedController {
-  constructor(private _SharedService: SharedService) {}
+  constructor(private _SharedService: SharedService, private mailService: MailService) {}
 
   @Post('contactUs')
   async contactUs(@Body() contactUsDto: createContactUsDto, @Res() res:Response) {
     try {
       const data: any = await this._SharedService.addContact(contactUsDto);
+      await this.mailService.sendContactUsEmail(data);
       res.status(200).send({
         message: 'success',
         data,
