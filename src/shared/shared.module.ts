@@ -3,10 +3,9 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SharedController } from './shared.controller';
 import { SharedService } from './shared.service';
-import { MailModule } from 'src/mail/mail.module';
 
 @Module({
-  imports:[MongooseModule.forFeature([{name: 'contact', schema: contactSchema}]), MailModule],
+  imports:[MongooseModule.forFeature([{name: 'contact', schema: contactSchema}])],
   controllers: [SharedController],
   providers: [SharedService]
 })
