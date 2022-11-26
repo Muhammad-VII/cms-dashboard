@@ -1,4 +1,4 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsArray, IsBoolean, IsOptional, IsString } from 'class-validator';
 
 export class createContactUsDto {
   @IsString()
@@ -22,4 +22,10 @@ export class addSectionDto {
   description: string;
   @IsString() @IsOptional()
   image: string;
+  @IsArray() @IsOptional()
+  images: string[];
+  @IsBoolean() @IsOptional()
+  hidden: boolean;
+  @IsString() @IsOptional()
+  dir: string;
 }

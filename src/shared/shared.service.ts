@@ -48,13 +48,41 @@ export class SharedService {
         subTitle: addSectionDto.subTitle,
         extraTitle: addSectionDto.extraTitle,
         description: addSectionDto.description,
-        image: addSectionDto.image
+        image: addSectionDto.image,
+        images: addSectionDto.images,
+        hidden: addSectionDto.hidden,
+        dir: addSectionDto.dir
       });
       const results = await newSectionData.save();
       return results;
     } catch (error) {
       return error;
     }
+  }
+
+  async updateSection(id: string, addSectionDto: addSectionDto) {
+    try {
+      const results = await this.sectionModel.findById(id);
+      if (results) {
+        results.title = addSectionDto.title;
+        results.subTitle = addSectionDto.subTitle;
+        results.extraTitle = addSectionDto.extraTitle;
+        results.description = addSectionDto.description;
+        results.image = addSectionDto.image;
+        results.images = addSectionDto.images;
+        results.hidden = addSectionDto.hidden;
+        results.dir = addSectionDto.dir;
+        await results.save();
+      }
+      return results;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getSectionById(id: string) {
+    const query = await this.sectionModel.findById(id);
+    return query;
   }
 
   async getAllSections(documentsToSkip = 0, limitToDocuments?: number) {

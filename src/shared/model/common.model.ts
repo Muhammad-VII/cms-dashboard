@@ -1,4 +1,4 @@
-import { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
 export const contactSchema = new Schema(
   {
@@ -19,6 +19,9 @@ export const addSectionSchema = new Schema(
     extraTitle: { type: String, required: false },
     description: { type: String, required: false },
     image: { type: String, required: false },
+    images: { type: Array, required: false },
+    hidden: { type: Boolean, required: false, default: false },
+    dir: { type: String, required: false },
   },
   {
     timestamps: true,
@@ -37,4 +40,7 @@ export interface addSectionDocument extends Document {
   extraTitle: string;
   description: string;
   image: string;
+  images: string[];
+  hidden: boolean;
+  dir: string;
 }
