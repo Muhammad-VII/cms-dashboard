@@ -12,8 +12,29 @@ export const contactSchema = new Schema(
   },
 );
 
+export const addSectionSchema = new Schema(
+  {
+    title: { type: String, required: true },
+    subTitle: { type: String, required: false },
+    extraTitle: { type: String, required: false },
+    description: { type: String, required: false },
+    image: { type: String, required: false },
+  },
+  {
+    timestamps: true,
+  },
+);
+
 export interface contactDocument extends Document {
   name: string;
   email: string;
   message: string;
+}
+
+export interface addSectionDocument extends Document {
+  title: string;
+  subTitle: string;
+  extraTitle: string;
+  description: string;
+  image: string;
 }

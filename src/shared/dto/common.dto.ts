@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsOptional, IsString } from 'class-validator';
 
 export class createContactUsDto {
   @IsString()
@@ -9,4 +9,17 @@ export class createContactUsDto {
   subject: string;
   @IsString()
   message: string;
+}
+
+export class addSectionDto {
+  @IsString()
+  title: string;
+  @IsString() @IsOptional()
+  subTitle: string;
+  @IsString() @IsOptional()
+  extraTitle: string;
+  @IsString() @IsOptional()
+  description: string;
+  @IsString() @IsOptional()
+  image: string;
 }
