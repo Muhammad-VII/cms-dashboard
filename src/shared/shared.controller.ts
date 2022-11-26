@@ -58,6 +58,7 @@ export class SharedController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('getSectionById/:id')
   async getSectionById(@Param('id') id: string, @Res() res:Response) {
     try {
@@ -77,15 +78,24 @@ export class SharedController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch('updateSectionById/:id')
   async updateSectionById(@Param('id') id: string, @Body() addSectionDto: addSectionDto, @Res() res:Response) {
     try {
-      const data: any = await this._SharedService.updateSection(id, addSectionDto);
-      res.status(200).send({
-        message: 'success',
-        data,
-      });
-      return { results: data };
+      const data: addSectionDocument | any = await this._SharedService.updateSection(id, addSectionDto);
+      if(data.errors) {
+        res.status(400).send({
+          message: 'error',
+          error: data.errors,
+        })
+        return data.errors;
+      } else {
+        res.status(200).send({
+          message: 'success',
+          data,
+        });
+        return { results: data };
+      }
     } catch (error) {
       res.status(404).send({
         message: 'error',
