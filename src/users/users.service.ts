@@ -72,4 +72,5 @@ export class UsersService {
     const user = await this.userModel.findOne({ email: email }).exec();
     return user;
   }
+
 }

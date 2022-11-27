@@ -30,7 +30,6 @@ export class SharedController {
     }
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get("getAllContactMessages")
   async findAllNews(@Query() {skip, limit}: PaginationParams) {
     const allContact: contactDocument | any = await this._SharedService.getAllContactMessages(skip, limit);
@@ -122,6 +121,33 @@ export class SharedController {
       if (data == 'Section not found') {
         res.status(404).send({
           message: 'Section not found',
+          error: data.data,
+        })
+        return data.data;
+      } else {
+        res.status(200).send({
+          message: 'Deleted successfully',
+          data,
+        });
+        return { results: data };
+      }
+    } catch (error) {
+      res.status(404).send({
+        message: 'error',
+        error,
+      })
+      return error;
+    }
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('deleteAllSections')
+  async deleteAllSections(@Res() res:Response) {
+    try {
+      const data: any = await this._SharedService.deleteAllSections();
+      if (data == 'Something went wrong') {
+        res.status(404).send({
+          message: 'No sections found',
           error: data.data,
         })
         return data.data;

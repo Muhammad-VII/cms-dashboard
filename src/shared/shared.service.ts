@@ -52,9 +52,10 @@ export class SharedService {
         images: addSectionDto.images,
         hidden: addSectionDto.hidden,
         dir: addSectionDto.dir
-      });
-      const results = await newSectionData.save();
-      return results;
+      })
+      await newSectionData.save();
+      const allSections = await this.sectionModel.find({});
+      return allSections;
     } catch (error) {
       return error;
     }
@@ -88,6 +89,20 @@ export class SharedService {
       } else {
         const results = await this.sectionModel.find({});
         return results;
+      }
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async deleteAllSections() {
+    try {
+      const results = await this.sectionModel.deleteMany({});
+      console.log(results);
+      if (results.deletedCount != 0) {
+        return `${results.deletedCount} section deleted`;
+      } else {
+        return 'Something went wrong';
       }
     } catch (error) {
       return error;
