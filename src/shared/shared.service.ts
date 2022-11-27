@@ -82,8 +82,13 @@ export class SharedService {
   
   async deleteSection(id: string) {
     try {
-      const results = await this.sectionModel.findByIdAndDelete(id);
-      return results;
+      const deleteSection = await this.sectionModel.findByIdAndDelete(id);
+      if (!deleteSection) {
+        return 'Section not found';
+      } else {
+        const results = await this.sectionModel.find({});
+        return results;
+      }
     } catch (error) {
       return error;
     }

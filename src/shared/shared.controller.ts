@@ -119,11 +119,19 @@ export class SharedController {
   async deleteSectionById(@Param('id') id: string, @Res() res:Response) {
     try {
       const data: any = await this._SharedService.deleteSection(id);
-      res.status(200).send({
-        message: 'success',
-        data,
-      });
-      return { results: data };
+      if (data == 'Section not found') {
+        res.status(404).send({
+          message: 'Section not found',
+          error: data.data,
+        })
+        return data.data;
+      } else {
+        res.status(200).send({
+          message: 'Deleted successfully',
+          data,
+        });
+        return { results: data };
+      }
     } catch (error) {
       res.status(404).send({
         message: 'error',
