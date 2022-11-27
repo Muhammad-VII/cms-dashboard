@@ -1,6 +1,6 @@
 import { JwtAuthGuard } from './../auth/jwt-auth.guard';
 import { contactDocument, addSectionDocument } from './model/common.model';
-import { Body, Controller, Get, Post, Query, Res, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Res, Param, Patch, Delete } from '@nestjs/common';
 import { Response } from 'express';
 import { addSectionDto, createContactUsDto } from './dto/common.dto';
 import { PaginationParams } from './dto/pagination-params';
@@ -111,6 +111,25 @@ export class SharedController {
     const allSections: addSectionDocument | any = await this._SharedService.getAllSections(skip, limit);
     return {
       data: allSections
+    }
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('deleteSectionById/:id')  
+  async deleteSectionById(@Param('id') id: string, @Res() res:Response) {
+    try {
+      const data: any = await this._SharedService.deleteSection(id);
+      res.status(200).send({
+        message: 'success',
+        data,
+      });
+      return { results: data };
+    } catch (error) {
+      res.status(404).send({
+        message: 'error',
+        error,
+      })
+      return error;
     }
   }
 
