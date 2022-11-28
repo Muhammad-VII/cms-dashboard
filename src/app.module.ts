@@ -1,4 +1,3 @@
-import { SharedController } from './shared/shared.controller';
 import { ValidateRequestMiddleware } from './validate-request.middleware';
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -10,8 +9,8 @@ import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { ChatGateway } from './gateways/event.gateway';
 import { HttpModule } from '@nestjs/axios';
-import { SharedModule } from './shared/shared.module';
 import { MailModule } from './mail/mail.module';
+import { HomeModule } from './home/home.module';
 
 @Module({
   imports: [
@@ -28,14 +27,14 @@ import { MailModule } from './mail/mail.module';
       ttl: 5,
       limit: 5
     }),
-    SharedModule,
     MailModule,
+    HomeModule,
   ],
   controllers: [AppController],
   providers: [AppService, ChatGateway],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(ValidateRequestMiddleware).forRoutes(SharedController);
+    consumer.apply(ValidateRequestMiddleware).forRoutes(AppController);
   }
 }

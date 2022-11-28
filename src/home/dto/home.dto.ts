@@ -1,17 +1,6 @@
 import { IsArray, IsBoolean, IsOptional, IsString } from 'class-validator';
 
-export class createContactUsDto {
-  @IsString()
-  name: string;
-  @IsString()
-  email: string;
-  @IsString()
-  subject: string;
-  @IsString()
-  message: string;
-}
-
-export class addSectionDto {
+export class homePageDto {
   @IsString()
   title: string;
   @IsString() @IsOptional()
