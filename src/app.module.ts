@@ -12,6 +12,7 @@ import { HttpModule } from '@nestjs/axios';
 import { MailModule } from './mail/mail.module';
 import { HomeModule } from './home/home.module';
 import { WasWirSindModule } from './was-wir-sind/was-wir-sind.module';
+import { WasWirTunModule } from './was-wir-tun/was-wir-tun.module';
 
 @Module({
   imports: [
@@ -30,7 +31,8 @@ import { WasWirSindModule } from './was-wir-sind/was-wir-sind.module';
     }),
     MailModule,
     HomeModule,
-    WasWirSindModule
+    WasWirSindModule,
+    WasWirTunModule
   ],
   controllers: [AppController],
   providers: [AppService, ChatGateway],
