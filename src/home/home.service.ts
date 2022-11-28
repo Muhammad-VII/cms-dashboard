@@ -2,7 +2,7 @@ import { Injectable, Query } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { homePageDto } from './dto/home.dto';
-import { homePageDocument } from './model/home.model';
+import { homePageDocument, Media } from './model/home.model';
 
 @Injectable()
 export class HomeService {
@@ -18,7 +18,7 @@ export class HomeService {
         extraTitle: homePageDto.extraTitle,
         description: homePageDto.description,
         image: homePageDto.image,
-        images: homePageDto.images,
+        media: homePageDto.media,
         hidden: homePageDto.hidden,
         dir: homePageDto.dir
       })
@@ -39,7 +39,7 @@ export class HomeService {
         results.extraTitle = homePageDto.extraTitle;
         results.description = homePageDto.description;
         results.image = homePageDto.image;
-        results.images = homePageDto.images;
+        results.media = homePageDto.media;
         results.hidden = homePageDto.hidden;
         results.dir = homePageDto.dir;
         await results.save();

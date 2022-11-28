@@ -1,5 +1,9 @@
 import { Schema, Document } from 'mongoose';
-
+export interface Media {
+  image: string,
+  title: string,
+  description?: string,
+}
 
 export const homePageSchema = new Schema(
   {
@@ -8,7 +12,7 @@ export const homePageSchema = new Schema(
     extraTitle: { type: String, required: false },
     description: { type: String, required: false },
     image: { type: String, required: false },
-    images: { type: Array, required: false },
+    media: { type: Array, required: false },
     hidden: { type: Boolean, required: false, default: false },
     dir: { type: String, required: false },
   },
@@ -23,7 +27,7 @@ export interface homePageDocument extends Document {
   extraTitle: string;
   description: string;
   image: string;
-  images: string[];
+  media: Media[];
   hidden: boolean;
   dir: string;
 }

@@ -1,5 +1,5 @@
 import { IsArray, IsBoolean, IsOptional, IsString } from 'class-validator';
-
+import { Media } from '../model/home.model'
 export class homePageDto {
   @IsString()
   title: string;
@@ -12,7 +12,7 @@ export class homePageDto {
   @IsString() @IsOptional()
   image: string;
   @IsArray() @IsOptional()
-  images: string[];
+  media: Media[];
   @IsBoolean() @IsOptional()
   hidden: boolean;
   @IsString() @IsOptional()
