@@ -2,7 +2,7 @@ import { Injectable, Query } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { homePageDto } from './dto/home.dto';
-import { homePageDocument, Media } from './model/home.model';
+import { homePageDocument } from './model/home.model';
 
 @Injectable()
 export class HomeService {
