@@ -5,7 +5,7 @@ import { homePageSchema } from './model/home.model';
 import { HomeService } from './home.service';
 
 @Module({
-  imports:[MongooseModule.forFeature([{name: 'home', schema: homePageSchema}])],
+  imports:[MongooseModule.forFeature([{name: 'home', collection: 'home', schema: homePageSchema}])],
   controllers: [HomeController],
   providers: [HomeService]
 })

@@ -1,4 +1,4 @@
-import { homePageDocument } from './../../dist/home/model/common.model.d';
+import { homePageDocument } from './model/home.model';
 import { HomeService } from './home.service';
 import {
   Body,
