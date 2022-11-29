@@ -18,7 +18,7 @@ import { Response } from 'express';
 export class UsersControllers {
   constructor(private readonly _UserService: UsersService) {}
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get('getAllUsers')
   getAllUser() {
     return this._UserService.getAllUsers();

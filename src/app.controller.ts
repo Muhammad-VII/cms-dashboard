@@ -23,7 +23,7 @@ export class AppController {
 
   findAll(): Observable<any> {
     try {
-      return this.httpService.get('https://ng-cms-dashboard.herokuapp.com/shared/getAllContactMessages?skip=0&limit=10')
+      return this.httpService.get('https://ng-cms-dashboard.herokuapp.com/users/getAllUsers')
     } catch (error) {
       return error
     }
