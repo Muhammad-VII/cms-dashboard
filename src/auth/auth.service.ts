@@ -59,7 +59,8 @@ export class AuthService {
         const comparePass = await compare(password,user.password)
         if(!comparePass) {
           throw new UnauthorizedException({
-            message:'Password is incorrect'
+            message:'Password is incorrect',
+            status:401
           })
         } else {
           const tokens = await this.getTokens(user)
