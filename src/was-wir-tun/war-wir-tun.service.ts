@@ -43,8 +43,9 @@ export class WasWirTunService {
         results.hidden = wasWirTunDto.hidden;
         results.dir = wasWirTunDto.dir;
         await results.save();
+        const allSection = await this.wasWirTun.find({});
+        return allSection;
       }
-      return results;
     } catch (error) {
       return error;
     }

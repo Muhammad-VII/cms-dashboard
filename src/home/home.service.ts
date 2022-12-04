@@ -43,8 +43,9 @@ export class HomeService {
         results.hidden = homePageDto.hidden;
         results.dir = homePageDto.dir;
         await results.save();
+        const allSections = await this.homeModel.find({});
+        return allSections;
       }
-      return results;
     } catch (error) {
       return error;
     }

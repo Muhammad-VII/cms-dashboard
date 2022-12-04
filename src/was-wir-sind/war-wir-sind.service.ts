@@ -43,8 +43,9 @@ export class WasWirSindService {
         results.hidden = wasWirSindDto.hidden;
         results.dir = wasWirSindDto.dir;
         await results.save();
+        const allSections = await this.wasWirSind.find({});
+        return allSections;
       }
-      return results;
     } catch (error) {
       return error;
     }

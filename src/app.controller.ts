@@ -16,9 +16,9 @@ import { HttpService } from '@nestjs/axios';
 @Controller()
 export class AppController {
   constructor(private _UserService: UsersService, private httpService: HttpService) {
-    setInterval(() => {
-      this.findAll().subscribe()
-    }, 1750000)
+    // setInterval(() => {
+    //   this.findAll().subscribe()
+    // }, 1750000)
   }
 
   findAll(): Observable<any> {
