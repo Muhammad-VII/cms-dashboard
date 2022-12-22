@@ -101,7 +101,7 @@ export class HomeController {
   @UseGuards(JwtAuthGuard)
   @Get('getAllSections')
   async getAllSections(
-    @Query() { skip, limit }: { skip: number; limit: number },
+    @Query() { skip, limit}: { skip: number; limit: number },
     @Res() res: Response,
   ) {
     try {

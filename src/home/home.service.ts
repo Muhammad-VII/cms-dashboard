@@ -13,14 +13,13 @@ export class HomeService {
   async addHomePageSection(homePageDto: homePageDto) {
     try {
       const newSectionData = new this.homeModel({
-        title: homePageDto.title,
-        subTitle: homePageDto.subTitle,
-        extraTitle: homePageDto.extraTitle,
-        description: homePageDto.description,
+        due: homePageDto.due,
+        ar: homePageDto.ar,
+        en: homePageDto.en,
         image: homePageDto.image,
         media: homePageDto.media,
         hidden: homePageDto.hidden,
-        dir: homePageDto.dir
+        btnHidden: homePageDto.btnHidden,
       })
       await newSectionData.save();
       const allSections = await this.homeModel.find({});
@@ -34,14 +33,13 @@ export class HomeService {
     try {
       const results = await this.homeModel.findById(id);
       if (results) {
-        results.title = homePageDto.title;
-        results.subTitle = homePageDto.subTitle;
-        results.extraTitle = homePageDto.extraTitle;
-        results.description = homePageDto.description;
+        results.due = homePageDto.due;
+        results.ar = homePageDto.ar;
+        results.en = homePageDto.en;
         results.image = homePageDto.image;
         results.media = homePageDto.media;
         results.hidden = homePageDto.hidden;
-        results.dir = homePageDto.dir;
+        results.btnHidden = homePageDto.btnHidden;
         await results.save();
         const allSections = await this.homeModel.find({});
         return allSections;
@@ -95,7 +93,7 @@ export class HomeService {
     const query = await this.homeModel
       .find({})
       .skip(documentsToSkip)
-      .limit(limitToDocuments);
+      .limit(limitToDocuments)
       if (query.length == 0) {
         return 'No sections found';
       } else {

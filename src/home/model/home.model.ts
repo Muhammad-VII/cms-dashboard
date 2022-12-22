@@ -7,14 +7,28 @@ export interface Media {
 
 export const homePageSchema = new Schema(
   {
-    title: { type: String, required: true },
-    subTitle: { type: String, required: false },
-    extraTitle: { type: String, required: false },
-    description: { type: String, required: false },
+    due: { type: {
+      title: { type: String, required: false },
+      subTitle: { type: String, required: false },
+      extraTitle: { type: String, required: false },
+      description: { type: String, required: false },
+    }, required: false },
+    ar: { type: {
+      title: { type: String, required: false },
+      subTitle: { type: String, required: false },
+      extraTitle: { type: String, required: false },
+      description: { type: String, required: false },
+    }, required: false },
+    en: { type: {
+      title: { type: String, required: false },
+      subTitle: { type: String, required: false },
+      extraTitle: { type: String, required: false },
+      description: { type: String, required: false },
+    }, required: false },
     image: { type: String, required: false },
     media: { type: Array, required: false },
     hidden: { type: Boolean, required: false, default: false },
-    dir: { type: String, required: false },
+    btnHidden: { type: Boolean, required: false, default: false },
   },
   {
     timestamps: true,
@@ -22,12 +36,26 @@ export const homePageSchema = new Schema(
 );
 
 export interface homePageDocument extends Document {
-  title: string;
-  subTitle: string;
-  extraTitle: string;
-  description: string;
+  due: {
+    title: string;
+    subTitle: string;
+    extraTitle: string;
+    description: string;
+  };
+  ar: {
+    title: string;
+    subTitle: string;
+    extraTitle: string;
+    description: string;
+  };
+  en: {
+    title: string;
+    subTitle: string;
+    extraTitle: string;
+    description: string;
+  };
   image: string;
   media: Media[];
   hidden: boolean;
-  dir: string;
+  btnHidden: boolean;
 }
