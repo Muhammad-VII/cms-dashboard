@@ -21,7 +21,7 @@ export class WasWirSindController {
   constructor(private _WasWirSindService: WasWirSindService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Post('addSection')
+  @Post('addSection-due')
   async addSection(@Body() wasWirSindDto: wasWirSindDto, @Res() res: Response) {
     try {
       const data: any = await this._WasWirSindService.addHomePageSection(wasWirSindDto);
@@ -40,7 +40,7 @@ export class WasWirSindController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('getSectionById/:id')
+  @Get('getSectionById-due/:id')
   async getSectionById(@Param('id') id: string, @Res() res: Response) {
     try {
       const data: any = await this._WasWirSindService.getSectionById(id);
@@ -67,7 +67,7 @@ export class WasWirSindController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch('updateSectionById/:id')
+  @Patch('updateSectionById-due/:id')
   async updateSectionById(
     @Param('id') id: string,
     @Body() wasWirSindDto: wasWirSindDto,
@@ -99,7 +99,7 @@ export class WasWirSindController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('getAllSections')
+  @Get('getAllSections-due')
   async getAllSections(
     @Query() { skip, limit }: { skip: number; limit: number },
     @Res() res: Response,
@@ -129,7 +129,7 @@ export class WasWirSindController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete('deleteSectionById/:id')
+  @Delete('deleteSectionById-due/:id')
   async deleteSectionById(@Param('id') id: string, @Res() res: Response) {
     try {
       const data: any = await this._WasWirSindService.deleteHomePageSection(id);
@@ -156,7 +156,7 @@ export class WasWirSindController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete('deleteAllSections')
+  @Delete('deleteAllSections-due')
   async deleteAllSections(@Res() res: Response) {
     try {
       const data: any = await this._WasWirSindService.deleteAllSections();

@@ -22,7 +22,7 @@ export class HomeController {
 
   // Start of Due language
   @UseGuards(JwtAuthGuard)
-  @Post('addSection')
+  @Post('addSection-due')
   async addSection(@Body() homePageDto: homePageDto, @Res() res: Response, @Query() { lang }: { lang: string }) {
     try {
       const data: any = await this._HomeService.addHomePageSection(homePageDto);
@@ -41,7 +41,7 @@ export class HomeController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('getSectionById/:id')
+  @Get('getSectionById-due/:id')
   async getSectionById(@Param('id') id: string, @Res() res: Response) {
     try {
       const data: any = await this._HomeService.getSectionById(id);
@@ -68,7 +68,7 @@ export class HomeController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Patch('updateSectionById/:id')
+  @Patch('updateSectionById-due/:id')
   async updateSectionById(
     @Param('id') id: string,
     @Body() homePageDto: homePageDto,
@@ -100,7 +100,7 @@ export class HomeController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('getAllSections')
+  @Get('getAllSections-due')
   async getAllSections(
     @Query() { skip, limit }: { skip: number; limit: number },
     @Res() res: Response,
@@ -130,7 +130,7 @@ export class HomeController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete('deleteSectionById/:id')
+  @Delete('deleteSectionById-due/:id')
   async deleteSectionById(@Param('id') id: string, @Res() res: Response) {
     try {
       const data: any = await this._HomeService.deleteHomePageSection(id);
@@ -157,7 +157,7 @@ export class HomeController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete('deleteAllSections')
+  @Delete('deleteAllSections-due')
   async deleteAllSections(@Res() res: Response) {
     try {
       const data: any = await this._HomeService.deleteAllSections();
