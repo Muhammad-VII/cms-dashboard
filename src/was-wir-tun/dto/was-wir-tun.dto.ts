@@ -15,6 +15,6 @@ export class wasWirTunDto {
   media: Media[];
   @IsBoolean() @IsOptional()
   hidden: boolean;
-  @IsString() @IsOptional()
-  dir: string;
+  @IsBoolean() @IsOptional()
+  btnHidden: boolean;
 }

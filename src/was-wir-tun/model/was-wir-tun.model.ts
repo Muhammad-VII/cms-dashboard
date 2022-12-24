@@ -15,7 +15,7 @@ export const wasWirTunPageSchema = new Schema(
     image: { type: String, required: false },
     media: { type: Array, required: false },
     hidden: { type: Boolean, required: false, default: false },
-    dir: { type: String, required: false },
+    btnHidden: { type: Boolean, required: false, default: false },
   },
   {
     timestamps: true,
@@ -30,5 +30,5 @@ export interface wasWirTunPageDocument extends Document {
   image: string;
   media: Media[];
   hidden: boolean;
-  dir: string;
+  btnHidden: boolean;
 }
