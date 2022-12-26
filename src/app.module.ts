@@ -1,3 +1,4 @@
+import { ContactModule } from './contact/contact.module';
 import { ValidateRequestMiddleware } from './validate-request.middleware';
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -32,7 +33,8 @@ import { WasWirTunModule } from './was-wir-tun/was-wir-tun.module';
     MailModule,
     HomeModule,
     WasWirSindModule,
-    WasWirTunModule
+    WasWirTunModule,
+    ContactModule
   ],
   controllers: [AppController],
   providers: [AppService, ChatGateway],
