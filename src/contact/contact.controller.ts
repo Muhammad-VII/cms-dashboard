@@ -80,7 +80,8 @@ export class ContactController {
       return error;
     }
   }
-
+  
+  @UseGuards(JwtAuthGuard)
   @Delete('deleteAllMessages')
   async deleteAllMessages(@Res() res: Response) {
     try {

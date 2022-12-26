@@ -1,4 +1,4 @@
-import { ContactPageModule } from './home copy/contact-page.module';
+import { ContactPageModule } from './contact-page/contact-page.module';
 import { ContactModule } from './contact/contact.module';
 import { ValidateRequestMiddleware } from './validate-request.middleware';
 import { MiddlewareConsumer, Module } from '@nestjs/common';

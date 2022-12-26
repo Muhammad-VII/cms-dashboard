@@ -98,7 +98,6 @@ export class WasWirSindController {
     }
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('getAllSections-due')
   async getAllSections(
     @Query() { skip, limit }: { skip: number; limit: number },
@@ -261,7 +260,6 @@ export class WasWirSindController {
     }
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('getAllSections-en')
   async getAllSectionsEn(
     @Query() { skip, limit }: { skip: number; limit: number },
@@ -423,7 +421,6 @@ export class WasWirSindController {
     }
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('getAllSections-ar')
   async getAllSectionsAr(
     @Query() { skip, limit }: { skip: number; limit: number },
