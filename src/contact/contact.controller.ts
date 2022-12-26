@@ -92,7 +92,8 @@ export class ContactController {
         return { results: 'No message found' };
       } else {
         res.status(200).send({
-          message: 'All messages deleted successfully'
+          message: 'All messages deleted successfully',
+          data,
         });
         return { results: data };
       }
