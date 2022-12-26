@@ -1,3 +1,4 @@
+import { MailService } from './../mail/mail.service';
 import { Injectable, Query } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -8,7 +9,7 @@ import { contactDocument } from './model/contact.model';
 @Injectable()
 export class ContactService {
   constructor(
-    @InjectModel('contact') private readonly contact: Model<contactDocument>,
+    @InjectModel('contact') private readonly contact: Model<contactDocument>, private _MailService: MailService
   ) {}
 
   async addNewMessage(contactDto: contactDto) {
@@ -20,6 +21,7 @@ export class ContactService {
         message: contactDto.message
       })
       await newMessage.save();
+      this._MailService.sendContactUsEmail(contactDto);
       const allSections = await this.contact.find({});
       return allSections;
     } catch (error) {
