@@ -35,4 +35,32 @@ export class ContactService {
       return error;
     }
   }
+
+  async deleteMessage(id: string) {
+    try {
+      const deletedData = await this.contact.findByIdAndDelete(id);
+      if (deletedData == null) {
+        return { message: 'No data found' };
+      } else {
+        const allMessages = await this.contact.find({});
+        return allMessages;
+      }
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async deleteAllMessages() {
+    try {
+      const deletedData = await this.contact.deleteMany({});
+      if (deletedData.deletedCount == 0) {
+        return { message: 'No data found' };
+      } else {
+        const allMessages = await this.contact.find({});
+        return allMessages;
+      }
+    } catch (error) {
+      return error;
+    }
+  }
 }
