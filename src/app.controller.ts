@@ -10,23 +10,11 @@ import {
   Request,
   Body,
 } from '@nestjs/common';
-import { Observable } from 'rxjs';
-import { HttpService } from '@nestjs/axios';
- 
+
 @Controller()
 export class AppController {
-  constructor(private _UserService: UsersService, private httpService: HttpService) {
-    // setInterval(() => {
-    //   this.findAll().subscribe()
-    // }, 1750000)
-  }
+  constructor(private _UserService: UsersService) {
 
-  findAll(): Observable<any> {
-    try {
-      return this.httpService.get('https://ng-cms-dashboard.herokuapp.com/users/getAllUsers')
-    } catch (error) {
-      return error
-    }
   }
 
   @UseGuards(LocalAuthGuard)

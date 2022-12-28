@@ -22,8 +22,7 @@ export class ContactService {
       })
       await newMessage.save();
       this._MailService.sendContactUsEmail(contactDto);
-      const allSections = await this.contact.find({});
-      return allSections;
+      return newMessage;
     } catch (error) {
       return error;
     }

@@ -1,3 +1,4 @@
+import { SettingsModule } from './settings/settings.module';
 import { ContactPageModule } from './contact-page/contact-page.module';
 import { ContactModule } from './contact/contact.module';
 import { ValidateRequestMiddleware } from './validate-request.middleware';
@@ -36,7 +37,8 @@ import { WasWirTunModule } from './was-wir-tun/was-wir-tun.module';
     WasWirSindModule,
     WasWirTunModule,
     ContactModule,
-    ContactPageModule
+    ContactPageModule,
+    SettingsModule
   ],
   controllers: [AppController],
   providers: [AppService, ChatGateway],
