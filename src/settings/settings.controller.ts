@@ -38,6 +38,29 @@ export class SettingsController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Patch('updateLanguegeById/:id')
+  async updateLanguegeById(
+    @Param('id') id: string,
+    @Body() dto: languegeDto,
+    @Res() res: Response,
+  ) {
+    try {
+      const data: any = await this._SettingsService.updateLanguege(id, dto);
+      res.status(200).send({
+        message: 'success',
+        data,
+      });
+      return { results: data };
+    } catch (error) {
+      res.status(404).send({
+        message: 'error',
+        error,
+      });
+      return error;
+    }
+  }
+
   @Get('getAllLangueges')
   async getAllLangueges(
     @Query() { skip, limit }: { skip: number; limit: number },
