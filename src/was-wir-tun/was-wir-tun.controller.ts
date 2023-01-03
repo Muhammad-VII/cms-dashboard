@@ -38,7 +38,6 @@ export class WasWirTunController {
     }
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('getSectionById-due/:id')
   async getSectionById(@Param('id') id: string, @Res() res: Response) {
     try {
@@ -200,7 +199,6 @@ export class WasWirTunController {
     }
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('getSectionById-en/:id')
   async getSectionByIdEn(@Param('id') id: string, @Res() res: Response) {
     try {
@@ -361,7 +359,6 @@ export class WasWirTunController {
     }
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('getSectionById-ar/:id')
   async getSectionByIdAr(@Param('id') id: string, @Res() res: Response) {
     try {
