@@ -13,9 +13,9 @@ export class MailService {
 
   async sendContactUsEmail(userData: User) {
     await this.mailerService.sendMail({
-      to: userData.email,
+      to: "info@iskander-lbc.com",
       from: '"Support Team" <noreply@example.com>', // override default from
-      subject: 'New Contact Us Message ✔', // Subject line
+      subject: userData.subject, // Subject line
       template: './confirmation', // `.hbs` extension is appended automatically
       context: { // ✏️ filling curly brackets with content
         name: userData.name,
