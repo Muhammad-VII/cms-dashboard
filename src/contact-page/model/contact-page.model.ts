@@ -3,7 +3,8 @@ export interface Media {
   image: string,
   title?: string,
   subTitle?: string,
-  description?: string,
+  extraTitle?: string,
+  description?: string
 }
 
 export const contactPageSchema = new Schema(
