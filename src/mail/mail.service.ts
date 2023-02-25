@@ -14,7 +14,7 @@ export class MailService {
   async sendContactUsEmail(userData: User) {
     try {
       await this.mailerService.sendMail({
-        to: "meshoronaldo62@gmail.com",
+        to: "info@iskander-lbc.com",
         from: '"Support Team" <noreply@example.com>', // override default from
         subject: userData.subject, // Subject line
         template: './confirmation', // `.hbs` extension is appended automatically
